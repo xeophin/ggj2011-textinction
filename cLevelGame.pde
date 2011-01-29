@@ -2,6 +2,9 @@ class cLevelGame extends cLevel {
 
   cAvatar m_Avatar;
   cHealthbar m_Healthbar;
+  
+  // Adding a censor for testing purposes.
+  cCensor m_Censor;
 
   cPickUpFactory m_PickUpFactory;
   cPickUp[] m_aPickUps; // pickups on the canvas, pickup dies if hit by avatar or moves out of screen.
@@ -20,6 +23,8 @@ class cLevelGame extends cLevel {
 
     m_Avatar = new cAvatar(test);
     m_Healthbar = new cHealthbar(m_Avatar);
+    
+    m_Censor = new cCensor(m_Avatar);
 
     m_PosBackground = new PVector(0.0, 0.0);
     m_PickUpFactory = new cPickUpFactory();
@@ -57,6 +62,7 @@ class cLevelGame extends cLevel {
 
     m_Healthbar.draw();
     m_Avatar.draw();
+    m_Censor.draw();
     
     for(int i = 0; i < m_aPickUps.length; i++){
       if(m_aPickUps[i]== null || !m_aPickUps[i].m_alive){
