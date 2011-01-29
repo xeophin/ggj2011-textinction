@@ -52,11 +52,7 @@ class cAvatar extends cObjectVelocity{
     }
   }
   
-  void draw(){
-    if(m_lastDraw == 0){
-      m_lastDraw = millis();
-    }
-    else{
+  void draw(float _diffTime){
       //println("Pos Y: " + m_Position.y + " Vel Y: " + m_Velocity.y);
       
       if(m_Life > 0){
@@ -65,8 +61,8 @@ class cAvatar extends cObjectVelocity{
           m_Fat = m_Fat_Start;
         }
         
-        m_Position.x += m_Velocity.x * (millis() - m_lastDraw)/1000;
-        m_Position.y += m_Velocity.y * (millis() - m_lastDraw)/1000;
+        m_Position.x += m_Velocity.x * (_diffTime)/1000;
+        m_Position.y += m_Velocity.y * (_diffTime)/1000;
         //rect(m_Position.x, m_Position.y, 55, 55);
         
         
@@ -107,8 +103,6 @@ class cAvatar extends cObjectVelocity{
         text(life, width-200, 0+50.0);    
         popStyle(); 
         //println("X: " + m_Position.x + " Y: " + m_Position.y);
-        m_lastDraw = millis(); 
-        
         
       }
       else{
@@ -122,5 +116,4 @@ class cAvatar extends cObjectVelocity{
         Phase = "GameOver";
       }
     }
-  }
 }
