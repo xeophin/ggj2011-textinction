@@ -9,7 +9,7 @@ class cCensor extends cObjectVelocity {
   
   cCensor (String _Name, cAvatar _Avatar) {
     super(_Name);
-    m_Velocity = new PVector(0.2,0.0);
+    m_Velocity = new PVector(15.0,0.0);
     
     m_Avatar = _Avatar;
     s1 =loadShape("censor1.svg");
@@ -22,8 +22,8 @@ class cCensor extends cObjectVelocity {
     float velo_x = _Scroll.x + (m_Velocity.x * _diffTime);  
     
     // Place the three shapes according to the current fat content
-    shape(s1, pow(a.m_Fat / a.m_Fat_Max,0.2) * 1000 - 1200 + random(-2,2), random(-2,2));
-    shape(s2, pow(a.m_Fat / a.m_Fat_Max,0.4) * 1000 - 1200 + random(-4,4), random(-2,2));
-    shape(s3, pow(a.m_Fat / a.m_Fat_Max,0.7) * 1000 - 1200 + random(-10,10), random(-2,2));
+    shape(s1, pow(m_Avatar.m_Fat / m_Avatar.m_Fat_Max,0.2) * 1000 - 1200 + random(-2,2) + velo_x, random(-2,2));
+    shape(s2, pow(m_Avatar.m_Fat / m_Avatar.m_Fat_Max,0.4) * 1000 - 1200 + random(-4,4) + velo_x, random(-2,2));
+    shape(s3, pow(m_Avatar.m_Fat / m_Avatar.m_Fat_Max,0.7) * 1000 - 1200 + random(-10,10) + velo_x, random(-2,2));
   }
 }
