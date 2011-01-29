@@ -1,6 +1,11 @@
 class cAvatar extends cObjectVelocity{
+     
+  
+  float m_Fat_Start = 50.0;
+  float m_Fat_Max = 100.0;
+  float m_FatLoss = 1.0;
   float m_Fat;
-  int   m_Life;
+  int   m_Life = 3;
   cVector m_Acc;
   float m_lastDraw;
   
@@ -10,8 +15,8 @@ class cAvatar extends cObjectVelocity{
   char[] m_Name = new char[3];
   
   cAvatar(char[] _Name){
-    m_Fat = 50.0;
     m_Name = _Name;
+    m_Fat = m_Fat_Start;
     m_Position = new cVector(0.5*width, 400.0);
     m_Acc = new cVector(0.0, 0.0);
     m_Velocity = new cVector(0.,0.);
@@ -20,11 +25,14 @@ class cAvatar extends cObjectVelocity{
   
   void forward(){
     //m_Velocity.m_X += 10+m_Fat;
+    if(m_Life > 0){
+      m_Fat -= m_FatLoss;
+    }
   }
   
   void up(){
     if(abs(m_Velocity.m_Y) < 0.05){
-        m_Velocity.m_Y = 4*(-100+m_Fat);
+        m_Velocity.m_Y = 4*(-m_Fat_Max+m_Fat);
     }
   }
   
@@ -35,28 +43,66 @@ class cAvatar extends cObjectVelocity{
     else{
       //println("Pos Y: " + m_Position.m_Y + " Vel Y: " + m_Velocity.m_Y);
       
-      m_Position.m_X += m_Velocity.m_X * (millis() - m_lastDraw)/1000;
-      m_Position.m_Y += m_Velocity.m_Y * (millis() - m_lastDraw)/1000;
-      rect(m_Position.m_X, m_Position.m_Y, 55, 55);
-      
-      if( (m_Position.m_Y) > 500){
-        m_Velocity.m_Y = 0.0;
+      if(m_Life > 0){
+        if(m_Fat <=0){
+          m_Life -= 1;
+          m_Fat = m_Fat_Start;
+        }
+        
+        m_Position.m_X += m_Velocity.m_X * (millis() - m_lastDraw)/1000;
+        m_Position.m_Y += m_Velocity.m_Y * (millis() - m_lastDraw)/1000;
+        //rect(m_Position.m_X, m_Position.m_Y, 55, 55);
+        
+        
+        String ava = "";
+        for (int i=0; i < m_Life; i++){
+          ava = ava + String.format("%c", m_Name[i]);
+        }
+        
+        pushStyle();
+        fill(255);
+        textAlign(CENTER);
+        text(ava, m_Position.m_X, m_Position.m_Y);
+        popStyle();
+        
+        if( (m_Position.m_Y) > 500){
+          m_Velocity.m_Y = 0.0;
+        }
+        else{
+          m_Velocity.m_Y += m_Gravity;
+        }
+        
+        if(abs(m_Velocity.m_X) < m_Drag + 0.05){
+          m_Velocity.m_X = 0;
+        }
+        else
+        { 
+          m_Velocity.m_X -= m_Drag;
+        }
+        
+        fill(255); 
+
+        String fat = "Fat: " + String.format("%f", m_Fat);
+        String life = "Life: " + String.format("%d", m_Life);
+
+        text(fat, width-150, 0+50.0);
+        text(life, width-150, 0+100.0);    
+        
+        //println("X: " + m_Position.m_X + " Y: " + m_Position.m_Y);
+        m_lastDraw = millis(); 
+        
+        
       }
       else{
-        m_Velocity.m_Y += m_Gravity;
+        m_Fat = 0;
+        pushStyle();
+        fill(255,0,0);
+        textAlign(CENTER);
+        textSize(144);
+        text("Game Over", width/2, height/2);
+        popStyle(); 
+        Phase = "GameOver";
       }
-      
-      if(abs(m_Velocity.m_X) < m_Drag + 0.05){
-        m_Velocity.m_X = 0;
-      }
-      else
-      { 
-        m_Velocity.m_X -= m_Drag;
-      }
-      
-      //println("X: " + m_Position.m_X + " Y: " + m_Position.m_Y);
-      m_lastDraw = millis(); 
     }
   }
-  
 }

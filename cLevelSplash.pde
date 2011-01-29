@@ -12,9 +12,9 @@ class cLevelSplash extends cLevel{
   void draw(){
     
     fill(255);  
-      
+     
     // This is just a test. Sorry for messing up your code.
-    text(feed.entry[1].title, 10,48, 800,600);
+    //text(feed.entry[1].title, 10,48, 800,600);
     
     fill(255, 0, 0);
     text("Janina", random(width), random(height));
