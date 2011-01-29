@@ -3,7 +3,7 @@ class cLevelGame extends cLevel {
   cAvatar m_Avatar;
 
   PImage  m_Background;
-  cVector m_PosBackground;
+  PVector m_PosBackground;
 
   float m_Ground = 500;
 
@@ -16,7 +16,7 @@ class cLevelGame extends cLevel {
 
     m_Avatar = new cAvatar(test);
 
-    m_PosBackground = new cVector(0.0, 0.0);
+    m_PosBackground = new PVector(0.0, 0.0);
   }
 
   void init( String _Background) {
@@ -37,11 +37,14 @@ class cLevelGame extends cLevel {
   void draw() {
     background(0,255,0);
 
+    //image(m_Background, m_PosBackground.m_X-width, m_PosBackground.m_Y, width, height);   
     image(m_Background, m_PosBackground.m_X, m_PosBackground.m_Y, width, height);
-    image(m_Background, m_PosBackground.m_X-width, m_PosBackground.m_Y, width, height);   
+    image(m_Background, m_PosBackground.m_X+width, m_PosBackground.m_Y, width, height);   
+    image(m_Background, m_PosBackground.m_X+width+width, m_PosBackground.m_Y, width, height);       
     
-    if(m_PosBackground.m_X < 0) {
-          m_PosBackground.m_X = width;
+    
+    if(m_PosBackground.m_X <= -width) {
+          m_PosBackground.m_X = 0;
     }
 
     m_Avatar.draw();

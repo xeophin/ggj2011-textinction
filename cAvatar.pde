@@ -6,10 +6,10 @@ class cAvatar extends cObjectVelocity{
   float m_FatLoss = 1.0;
   float m_Fat;
   int   m_Life = 3;
-  cVector m_Acc;
+  PVector m_Acc;
   float m_lastDraw;
   
-  float m_Gravity = 1.0;
+  float m_Gravity = 1.5;
   float m_Drag = 1.0;
   
   char[] m_Name = new char[3];
@@ -17,9 +17,9 @@ class cAvatar extends cObjectVelocity{
   cAvatar(char[] _Name){
     m_Name = _Name;
     m_Fat = m_Fat_Start;
-    m_Position = new cVector(0.5*width, 400.0);
-    m_Acc = new cVector(0.0, 0.0);
-    m_Velocity = new cVector(0.,0.);
+    m_Position = new PVector(0.5*width, 400.0);
+    m_Acc = new PVector(0.0, 0.0);
+    m_Velocity = new PVector(0.,0.);
     m_lastDraw = 0.;
   }
   
@@ -32,7 +32,7 @@ class cAvatar extends cObjectVelocity{
   
   void up(){
     if(abs(m_Velocity.m_Y) < 0.05){
-        m_Velocity.m_Y = 4*(-m_Fat_Max+m_Fat);
+        m_Velocity.m_Y = 3*(-m_Fat_Max+m_Fat);
     }
   }
   
@@ -82,12 +82,14 @@ class cAvatar extends cObjectVelocity{
         
         fill(255); 
 
-        String fat = "Fat: " + String.format("%f", m_Fat);
+        String fat = "Fat: " + String.format("%.2f", m_Fat);
         String life = "Life: " + String.format("%d", m_Life);
 
-        text(fat, width-150, 0+50.0);
-        text(life, width-150, 0+100.0);    
-        
+        pushStyle();
+        textSize(18);
+        text(fat, width-150, 0+25.0);
+        text(life, width-150, 0+50.0);    
+        popStyle(); 
         //println("X: " + m_Position.m_X + " Y: " + m_Position.m_Y);
         m_lastDraw = millis(); 
         
