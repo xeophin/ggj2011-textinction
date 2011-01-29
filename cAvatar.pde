@@ -7,6 +7,8 @@ class cAvatar extends cObjectVelocity{
   float m_Fat;
   int   m_Life = 3;
   
+  float m_Ground = 500.0;
+  
   PVector m_Acc;
   //PVector m_Velocity;
 
@@ -18,7 +20,7 @@ class cAvatar extends cObjectVelocity{
   
   char[] m_Body = new char[3];
   
-  cAvatar(String _Name, char[] _Body){
+  cAvatar(String _Name, char[] _Body, float _Ground){
     super(_Name);
     
     m_Body = _Body;
@@ -27,6 +29,8 @@ class cAvatar extends cObjectVelocity{
     m_Position = new PVector(0.5*width, 400.0);
     m_Acc = new PVector(0.0, 0.0);
     m_Velocity = new PVector(0.,0.);
+    
+    m_Ground = _Ground;
     
     m_Width = 60;
     m_Height = 60;
@@ -77,7 +81,7 @@ class cAvatar extends cObjectVelocity{
         text(ava, m_Position.x, m_Position.y);
         popStyle();
         
-        if( (m_Position.y) > 500){
+        if( (m_Position.y) > m_Ground){
           m_Velocity.y = 0.0;
         }
         else{
