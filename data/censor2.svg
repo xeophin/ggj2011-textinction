@@ -1,38 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
-	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
-]>
-<svg version="1.1"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-	 x="0px" y="0px" width="800px" height="600px" viewBox="-42.465 0.227 800 600"
-	 overflow="visible" enable-background="new -42.465 0.227 800 600" xml:space="preserve">
-<defs>
-</defs>
-<rect x="76.713" fill="#1D00DF" width="298.63" height="37.263"/>
-<rect x="119.179" y="44.715" fill="#1D00DF" width="298.63" height="37.263"/>
-<rect x="154.795" y="72.662" fill="#1D00DF" width="298.631" height="37.263"/>
-<rect x="126.028" y="85.704" fill="#1D00DF" width="298.631" height="37.263"/>
-<rect x="28.768" y="18.631" fill="#1D00DF" width="298.631" height="37.263"/>
-<rect x="20.549" y="67.073" fill="#1D00DF" width="298.631" height="37.262"/>
-<rect x="84.933" y="117.377" fill="#1D00DF" width="298.631" height="37.263"/>
-<rect x="194.522" y="149.051" fill="#1D00DF" width="298.631" height="37.263"/>
-<rect x="119.179" y="167.682" fill="#1D00DF" width="298.631" height="37.263"/>
-<rect x="20.549" y="142.53" fill="#1D00DF" width="298.631" height="37.263"/>
-<rect x="84.933" y="192.056" fill="#1D00DF" width="298.631" height="37.263"/>
-<rect x="149.316" y="226.524" fill="#1D00DF" width="298.631" height="37.263"/>
-<rect x="45.206" y="245.155" fill="#1D00DF" width="298.631" height="37.263"/>
-<rect x="119.179" y="281.595" fill="#1D00DF" width="298.631" height="37.263"/>
-<rect x="58.904" y="313.102" fill="#1D00DF" width="298.631" height="37.263"/>
-<rect x="84.932" y="355.568" fill="#1D00DF" width="298.631" height="37.262"/>
-<rect x="126.028" y="331.734" fill="#1D00DF" width="298.631" height="37.262"/>
-<rect x="20.548" y="379.68" fill="#1D00DF" width="298.631" height="37.262"/>
-<rect x="84.932" y="411.187" fill="#1D00DF" width="298.631" height="37.262"/>
-<rect x="149.316" y="448.449" fill="#1D00DF" width="298.631" height="37.262"/>
-<rect y="467.081" fill="#1D00DF" width="298.631" height="37.262"/>
-<rect x="98.63" y="495.849" fill="#1D00DF" width="298.631" height="37.262"/>
-<rect x="84.932" y="523.245" fill="#1D00DF" width="298.631" height="37.262"/>
-<rect x="76.713" y="549.272" fill="#1D00DF" width="298.631" height="37.262"/>
-<rect x="106.851" y="560.507" fill="#1D00DF" width="298.631" height="37.262"/>
-<rect y="210.687" fill="#1D00DF" width="298.631" height="37.263"/>
+<!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="400px" height="600px" viewBox="200 0 400 600" enable-background="new 200 0 400 600" xml:space="preserve">
+<rect x="200.001" y="7.452" width="298.63" height="37.263"/>
+<rect x="226.03" y="44.715" width="298.63" height="37.263"/>
+<rect x="261.646" y="72.662" width="298.631" height="37.263"/>
+<rect x="232.879" y="85.704" transform="matrix(-0.9978 -0.0668 0.0668 -0.9978 756.5687 233.9588)" width="298.631" height="37.262"/>
+<rect x="200" y="72.663" width="298.631" height="37.262"/>
+<rect x="301.373" y="149.051" width="298.631" height="37.263"/>
+<rect x="226.03" y="167.682" transform="matrix(-0.9975 0.0712 -0.0712 -0.9975 763.0098 345.4198)" width="298.632" height="37.263"/>
+<rect x="269.5" y="192.056" width="220.915" height="37.263"/>
+<rect x="250.685" y="226.524" transform="matrix(-0.9989 -0.0471 0.0471 -0.9989 788.0091 508.8814)" width="298.632" height="37.264"/>
+<rect x="226.03" y="281.595" width="298.632" height="37.263"/>
+<rect x="213.702" y="313.103" width="298.632" height="37.264"/>
+<rect x="326.5" y="355.568" width="163.914" height="37.262"/>
+<rect x="250.685" y="322.586" transform="matrix(-0.9997 0.025 -0.025 -0.9997 808.4065 672.3256)" width="298.63" height="37.262"/>
+<rect x="285.715" y="378.238" transform="matrix(-0.999 0.0448 -0.0448 -0.999 887.4198 773.8298)" width="298.631" height="37.262"/>
+<rect x="200.001" y="411.188" width="290.413" height="37.262"/>
+<rect x="256.167" y="448.449" transform="matrix(-0.9994 0.0334 -0.0334 -0.9994 826.345 920.3518)" width="298.632" height="37.262"/>
+<rect x="301.373" y="471.081" width="298.631" height="37.262"/>
+<rect x="205.481" y="495.849" width="298.63" height="37.263"/>
+<rect x="291.783" y="530.641" width="298.631" height="37.262"/>
+<rect x="246.5" y="549.271" width="235.695" height="37.263"/>
+<rect x="213.702" y="560.507" width="298.632" height="37.263"/>
 </svg>
