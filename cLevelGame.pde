@@ -1,6 +1,9 @@
 class cLevelGame extends cLevel {
 
   cAvatar m_Avatar;
+  
+  // Adding a censor for testing purposes.
+  cCensor m_Censor;
 
   PImage  m_Background;
   cVector m_PosBackground;
@@ -15,6 +18,8 @@ class cLevelGame extends cLevel {
     };
 
     m_Avatar = new cAvatar(test);
+    
+    m_Censor = new cCensor(m_Avatar);
 
     m_PosBackground = new cVector(0.0, 0.0);
   }
@@ -45,6 +50,7 @@ class cLevelGame extends cLevel {
     }
 
     m_Avatar.draw();
+    m_Censor.draw();
   }
 }
 
