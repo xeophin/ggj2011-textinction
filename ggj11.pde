@@ -14,14 +14,10 @@ String Phase = "Splash";
 
 PFont fontSplash;
 
-FeedReader feed;
-
-void setup() {
-  size(1240, 800);
-  frameRate(60);
-
-
-  // For vector fonts, use the createFont() function. 
+void setup(){
+  size(800, 600);
+  
+    // For vector fonts, use the createFont() function. 
   fontSplash = loadFont("FagoBold.vlw");
 
   // Set the font and its size (in units of pixels)
@@ -29,25 +25,7 @@ void setup() {
 
   LevelFactory = new cLevelFactory();
   Level = LevelFactory.make(Phase);
-
-  // Just messing with the feed reader around here
-
-    // load feed
-  //feedurl="http://feeds.reuters.com/reuters/worldNews";
-  //println("Loading feed: "+feedurl);
-  //feed=new FeedReader(feedurl);
-
-  // print feed data
-  //  println("Feed: "+feed.title);
-  //  println("------------------------------");
-  //  println("Description: "+feed.description);
-  //  println("\nNumber of entries: "+feed.numEntries);
-  //  println("------------------------------");
-  //
-  //  // print feed entries
-  //  for(int i=0; i< feed.numEntries; i++) {
-  //    println(i+": "+feed.entry[i]);
-  //  }
+  
 }
 
 void draw() {

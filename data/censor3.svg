@@ -1,33 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
-	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
-]>
-<svg version="1.1"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-	 x="0px" y="0px" width="800px" height="600px" viewBox="-13.013 0.227 800 600"
-	 overflow="visible" enable-background="new -13.013 0.227 800 600" xml:space="preserve">
-<defs>
-</defs>
-<rect x="106.166" fill="#7F0032" width="298.63" height="37.263"/>
-<rect x="120.809" y="91.293" fill="#7F0032" width="298.631" height="37.263"/>
-<rect x="184.124" y="72.662" fill="#7F0032" width="298.631" height="37.263"/>
-<rect x="328.083" y="18.631" fill="#7F0032" width="298.631" height="37.263"/>
-<rect x="58.22" y="18.631" fill="#7F0032" width="298.631" height="37.263"/>
-<rect x="99.315" y="149.051" fill="#7F0032" width="298.631" height="37.263"/>
-<rect x="99.315" y="186.313" fill="#7F0032" width="298.631" height="37.263"/>
-<rect x="356.124" y="173.425" fill="#7F0032" width="298.631" height="37.263"/>
-<rect x="77.453" y="229.318" fill="#7F0032" width="298.631" height="37.263"/>
-<rect x="298.631" y="263.787" fill="#7F0032" width="298.631" height="37.263"/>
-<rect x="88.356" y="313.102" fill="#7F0032" width="298.631" height="37.263"/>
-<rect x="77.453" y="313.103" fill="#7F0032" width="298.631" height="37.262"/>
-<rect x="226.768" y="379.68" fill="#7F0032" width="298.631" height="37.262"/>
-<rect x="29.452" y="467.081" fill="#7F0032" width="298.631" height="37.262"/>
-<rect x="184.124" y="495.849" fill="#7F0032" width="298.631" height="37.262"/>
-<rect x="120.808" y="416.941" fill="#7F0032" width="298.631" height="37.262"/>
-<rect x="68.303" y="560.507" fill="#7F0032" width="298.631" height="37.262"/>
-<rect x="206.809" y="533.11" fill="#7F0032" width="298.631" height="37.262"/>
-<rect y="361.049" fill="#7F0032" width="298.631" height="37.262"/>
-<rect x="376.084" y="467.081" fill="#7F0032" width="298.631" height="37.262"/>
-<rect x="29.452" y="210.687" fill="#7F0032" width="298.631" height="37.263"/>
+<!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="400px" height="600px" viewBox="0 0 400 600" enable-background="new 0 0 400 600" xml:space="preserve">
+<g>
+	<polygon points="28.857,72.662 28.857,109.925 117.436,109.925 118.927,138.022 326.575,127.001 324.6,89.791 284.845,91.9 
+		284.845,72.662 	"/>
+	<polygon points="204.796,18.631 204.796,0 0,0 0,37.263 52.5,37.263 52.5,55.894 128.083,55.894 156.852,55.894 400,55.894 
+		400,18.631 	"/>
+	<polygon points="101.426,192.055 59.5,192.055 59.5,210.687 17.619,210.687 17.619,247.95 128.083,247.95 128.083,229.318 
+		358.131,229.318 358.131,192.055 250.741,192.055 250.741,167.683 197.945,167.683 197.945,149.051 0,149.051 0,186.314 
+		101.426,186.314 	"/>
+	<polygon points="289.799,235.019 175.115,255.957 176.544,263.787 98.631,263.787 98.631,301.05 397.262,301.05 397.262,263.787 
+		295.051,263.787 	"/>
+	
+		<rect x="200.808" y="262.559" transform="matrix(0.0541 -0.9985 0.9985 0.0541 -123.7136 532.925)" width="37.262" height="138.408"/>
+	<polygon points="26.768,416.943 325.399,416.943 325.399,379.68 98.631,379.68 98.631,361.049 11.5,361.049 11.5,398.311 
+		26.768,398.311 	"/>
+	<polygon points="237.852,454.688 234.658,417.564 131.074,426.475 134.268,463.599 168.51,460.653 165.822,495.727 
+		278.271,504.343 128.083,504.343 128.083,467.081 72.852,467.081 72.852,504.343 17.619,504.343 17.619,541.605 316.25,541.605 
+		316.25,507.253 389.09,512.834 391.937,475.68 181.379,459.546 	"/>
+	
+		<rect x="102.436" y="523.39" transform="matrix(-0.0807 -0.9967 0.9967 -0.0807 -444.3876 744.348)" width="37.26" height="107.43"/>
+</g>
 </svg>
