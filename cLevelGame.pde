@@ -89,13 +89,13 @@ class cLevelGame extends cLevel {
       for(int i = 0; i < m_aPickUps.length; i++){
         if(m_aPickUps[i]== null || !m_aPickUps[i].m_alive){
           if(random(6)<= 3){
-            m_aPickUps[i] = m_PickUpFactory.make(true, width, m_Ground , 5);
+            m_aPickUps[i] = m_PickUpFactory.make(true, width, m_Ground , 2);
           }else{
-            m_aPickUps[i] = m_PickUpFactory.make(false, width, m_Ground , 5);
+            m_aPickUps[i] = m_PickUpFactory.make(false, width, m_Ground , 2);
           }
         }
         m_Avatar.hitPickUp(m_aPickUps[i]);
-        m_aPickUps[i].draw();
+        m_aPickUps[i].draw(millis()-m_lastDraw, Scroll);
       }
       m_lastDraw = millis(); 
     }
