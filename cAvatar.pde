@@ -13,7 +13,7 @@ class cAvatar extends cObjectVelocity{
   float m_Width;
   float m_Height;
   
-  float m_Gravity = 1.5;
+  float m_Gravity = 25;
   float m_Drag = 1.0;
   
   char[] m_Body = new char[3];
@@ -41,7 +41,7 @@ class cAvatar extends cObjectVelocity{
   
   void up(){
     if(abs(m_Velocity.y) < 0.05){
-        m_Velocity.y = 3*(-m_Fat_Max+m_Fat);
+        m_Velocity.y = 13*(-m_Fat_Max+m_Fat);
     }
   }
   void hitPickUp(cPickUp _PickUp){
