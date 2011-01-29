@@ -2,27 +2,31 @@
 class cArticle extends cObjectVelocity {
 
   FeedReader feed;
-  String feedurl="http://feeds.reuters.com/reuters/worldNews";
+  String feedurl="http://www.nytimes.com/services/xml/rss/nyt/World.xml";
   
-  float randomArticle;
+  int randomArticle;
+
+  PFont titleFont;
+  PFont bodyFont;
 
   /// Constructor
   cArticle (String _Name) {
     super(_Name);
+    
+    titleFont = loadFont("JensonBold.vlw");
+    bodyFont = loadFont("JensonDisplay.vlw");
+    
     println("Loading feed: "+feedurl);
     try {
       feed = new FeedReader(feedurl);
-    } finally {
+      randomArticle = int(random(feed.numEntries));
+    } catch (Exception e) {
+      // I guess we should provide some alternative text here if we don't get one online.
     }
-    randomArticle = random(feed.numEntries);
+    
     
     
       // Just messing with the feed reader around here
-  
-  // load feed
-  feedurl="http://feeds.reuters.com/reuters/worldNews";
-  println("Loading feed: "+feedurl);
-  //feed=new FeedReader(feedurl);
 
   // print feed data
 //  println("Feed: "+feed.title);
@@ -41,7 +45,9 @@ class cArticle extends cObjectVelocity {
   }
   
  void draw () {
-    
+   
+   textFont(titleFont);
+  text(feed.entry[randomArticle].title, 0,0);
   
   }
 }
