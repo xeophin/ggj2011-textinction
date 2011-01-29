@@ -6,6 +6,9 @@ class cLevelGame extends cLevel {
 
   // Adding a censor for testing purposes.
   cCensor m_Censor;
+  
+  // Adding an article
+  cArticle m_Article;
 
   cPickUpFactory m_PickUpFactory;
   cPickUp[] m_aPickUps; // pickups on the canvas, pickup dies if hit by avatar or moves out of screen.
@@ -36,6 +39,8 @@ class cLevelGame extends cLevel {
     m_Healthbar = new cHealthbar(m_Avatar);
 
     m_Censor = new cCensor("Censor", m_Avatar);
+    
+    m_Article = new cArticle("Article");
 
     m_PosBackground = new PVector(0.0, 0.0);
     m_PickUpFactory = new cPickUpFactory();
