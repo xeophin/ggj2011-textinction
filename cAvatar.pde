@@ -6,8 +6,13 @@ class cAvatar extends cObjectVelocity{
   float m_FatLoss = 1.0;
   float m_Fat;
   int   m_Life = 3;
+  
   PVector m_Acc;
+  PVector m_Velocity;
+  
   float m_lastDraw;
+  float m_Width;
+  float m_Height;
   
   float m_Gravity = 1.5;
   float m_Drag = 1.0;
@@ -17,22 +22,33 @@ class cAvatar extends cObjectVelocity{
   cAvatar(char[] _Name){
     m_Name = _Name;
     m_Fat = m_Fat_Start;
+    
     m_Position = new PVector(0.5*width, 400.0);
     m_Acc = new PVector(0.0, 0.0);
     m_Velocity = new PVector(0.,0.);
+    
     m_lastDraw = 0.;
+    m_Width = 60;
+    m_Height = 60;
   }
   
   void forward(){
-    //m_Velocity.m_X += 10+m_Fat;
+    //m_Velocity.x += 10+m_Fat;
     if(m_Life > 0){
       m_Fat -= m_FatLoss;
     }
   }
   
   void up(){
-    if(abs(m_Velocity.m_Y) < 0.05){
-        m_Velocity.m_Y = 3*(-m_Fat_Max+m_Fat);
+    if(abs(m_Velocity.y) < 0.05){
+        m_Velocity.y = 3*(-m_Fat_Max+m_Fat);
+    }
+  }
+  void hitPickUp(cPickUp _PickUp){
+    if ((m_Position.x+m_Height > _PickUp.m_Position.x && m_Position.x < _PickUp.m_Position.x + _PickUp.m_Height)
+          &&(m_Position.y+m_Width > _PickUp.m_Position.y && m_Position.y < _PickUp.m_Position.y + _PickUp.m_Width)){
+      m_Fat += _PickUp.m_Fat;
+      _PickUp.m_alive=false;
     }
   }
   
@@ -41,7 +57,7 @@ class cAvatar extends cObjectVelocity{
       m_lastDraw = millis();
     }
     else{
-      //println("Pos Y: " + m_Position.m_Y + " Vel Y: " + m_Velocity.m_Y);
+      //println("Pos Y: " + m_Position.y + " Vel Y: " + m_Velocity.y);
       
       if(m_Life > 0){
         if(m_Fat <=0){
@@ -49,9 +65,9 @@ class cAvatar extends cObjectVelocity{
           m_Fat = m_Fat_Start;
         }
         
-        m_Position.m_X += m_Velocity.m_X * (millis() - m_lastDraw)/1000;
-        m_Position.m_Y += m_Velocity.m_Y * (millis() - m_lastDraw)/1000;
-        //rect(m_Position.m_X, m_Position.m_Y, 55, 55);
+        m_Position.x += m_Velocity.x * (millis() - m_lastDraw)/1000;
+        m_Position.y += m_Velocity.y * (millis() - m_lastDraw)/1000;
+        //rect(m_Position.x, m_Position.y, 55, 55);
         
         
         String ava = "";
@@ -62,22 +78,22 @@ class cAvatar extends cObjectVelocity{
         pushStyle();
         fill(255);
         textAlign(CENTER);
-        text(ava, m_Position.m_X, m_Position.m_Y);
+        text(ava, m_Position.x, m_Position.y);
         popStyle();
         
-        if( (m_Position.m_Y) > 500){
-          m_Velocity.m_Y = 0.0;
+        if( (m_Position.y) > 500){
+          m_Velocity.y = 0.0;
         }
         else{
-          m_Velocity.m_Y += m_Gravity;
+          m_Velocity.y += m_Gravity;
         }
         
-        if(abs(m_Velocity.m_X) < m_Drag + 0.05){
-          m_Velocity.m_X = 0;
+        if(abs(m_Velocity.x) < m_Drag + 0.05){
+          m_Velocity.x = 0;
         }
         else
         { 
-          m_Velocity.m_X -= m_Drag;
+          m_Velocity.x -= m_Drag;
         }
         
         fill(255); 
@@ -90,7 +106,7 @@ class cAvatar extends cObjectVelocity{
         text(fat, width-150, 0+25.0);
         text(life, width-150, 0+50.0);    
         popStyle(); 
-        //println("X: " + m_Position.m_X + " Y: " + m_Position.m_Y);
+        //println("X: " + m_Position.x + " Y: " + m_Position.y);
         m_lastDraw = millis(); 
         
         
