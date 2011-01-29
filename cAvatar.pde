@@ -6,6 +6,7 @@ class cAvatar extends cObjectVelocity{
   float m_FatLoss = 0.3;
   float m_Fat;
   int   m_Life = 3;
+  int   m_Steps = 0;
   
   float m_Ground = 500.0;
   
@@ -40,6 +41,7 @@ class cAvatar extends cObjectVelocity{
     //m_Velocity.x += 10+m_Fat;
     if(m_Life > 0){
       m_Fat -= m_FatLoss;
+      m_Steps++;
     }
   }
   
@@ -99,13 +101,20 @@ class cAvatar extends cObjectVelocity{
         fill(255); 
 
         //String fat = "Fat: " + String.format("%.2f", m_Fat);
-        String life = "Life: " + String.format("%d", m_Life);
+        
+        String life = "";
+        for(int i = 0; i< m_Life;i++)
+        { 
+           life += "o";
+        }
+        String steps = String.format("%d", m_Steps*100);
 
         pushStyle();
         textSize(18);
         //text(fat, width-200, 0+25.0);
-        text(life, width-200, 0+50.0);    
+        text(life, width-200, 0+50.0);          
         popStyle(); 
+        text(steps, width-200, 0+100.0);    
         //println("X: " + m_Position.x + " Y: " + m_Position.y);
         
       }
