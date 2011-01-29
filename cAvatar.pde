@@ -80,6 +80,7 @@ class cAvatar extends cObjectVelocity{
         pushStyle();
         fill(255);
         textAlign(CENTER);
+        textSize(84);
         text(ava, m_Position.x, m_Position.y);
         popStyle();
         
