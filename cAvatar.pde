@@ -1,9 +1,9 @@
 class cAvatar extends cObjectVelocity{
      
   
-  float m_Fat_Start = 50.0;
+  float m_Fat_Start = 70.0;
   float m_Fat_Max = 100.0;
-  float m_FatLoss = 1.0;
+  float m_FatLoss = 0.3;
   float m_Fat;
   int   m_Life = 3;
   
@@ -98,13 +98,13 @@ class cAvatar extends cObjectVelocity{
         
         fill(255); 
 
-        String fat = "Fat: " + String.format("%.2f", m_Fat);
+        //String fat = "Fat: " + String.format("%.2f", m_Fat);
         String life = "Life: " + String.format("%d", m_Life);
 
         pushStyle();
         textSize(18);
-        text(fat, width-150, 0+25.0);
-        text(life, width-150, 0+50.0);    
+        //text(fat, width-200, 0+25.0);
+        text(life, width-200, 0+50.0);    
         popStyle(); 
         //println("X: " + m_Position.x + " Y: " + m_Position.y);
         m_lastDraw = millis(); 

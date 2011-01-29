@@ -1,6 +1,7 @@
 class cLevelGame extends cLevel {
 
   cAvatar m_Avatar;
+  cHealthbar m_Healthbar;
 
   cPickUpFactory m_PickUpFactory;
   cPickUp[] m_aPickUps; // pickups on the canvas, pickup dies if hit by avatar or moves out of screen.
@@ -18,6 +19,7 @@ class cLevelGame extends cLevel {
     };
 
     m_Avatar = new cAvatar(test);
+    m_Healthbar = new cHealthbar(m_Avatar);
 
     m_PosBackground = new PVector(0.0, 0.0);
     m_PickUpFactory = new cPickUpFactory();
@@ -53,6 +55,7 @@ class cLevelGame extends cLevel {
           m_PosBackground.x = 0;
     }
 
+    m_Healthbar.draw();
     m_Avatar.draw();
     
     for(int i = 0; i < m_aPickUps.length; i++){
