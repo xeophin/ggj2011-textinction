@@ -41,3 +41,19 @@ void keyPressed() {
   } 
 }
 
+void keyReleased() {
+  if(m_Level instanceof cLevelGame)
+  {
+    cLevelGame test = (cLevelGame)m_Level;
+    if(key == CODED)
+    {
+      if (keyCode == UP) {
+        test.up();
+      } 
+      else if (keyCode == RIGHT) {
+       test.forward();
+      } 
+    }
+  }
+}
+
