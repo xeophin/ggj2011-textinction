@@ -115,8 +115,28 @@ class cLevelGame extends cLevel {
         m_Avatar.hitPickUp(m_aPickUps[i]);
         m_aPickUps[i].draw(millis()-m_lastDraw, Scroll);
       }
+     
+	if(m_Avatar.m_Life<=0) {
+      m_Active=false;
+    }
+
       m_lastDraw = millis();
     }
   }
-}
 
+  void keyReleased() {
+    if (keyCode == ' ') {
+      m_Avatar.up();
+    } 
+
+    if(key == CODED)
+    {
+      if (keyCode == UP) {
+        m_Avatar.up();
+      } 
+      else if (keyCode == RIGHT) {
+        m_Avatar.forward();
+      }
+    }
+  }
+}
