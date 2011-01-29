@@ -8,26 +8,26 @@ class cAvatar extends cObjectVelocity{
   int   m_Life = 3;
   
   PVector m_Acc;
-  PVector m_Velocity;
-  
-  float m_lastDraw;
+  //PVector m_Velocity;
+
   float m_Width;
   float m_Height;
   
   float m_Gravity = 1.5;
   float m_Drag = 1.0;
   
-  char[] m_Name = new char[3];
+  char[] m_Body = new char[3];
   
-  cAvatar(char[] _Name){
-    m_Name = _Name;
+  cAvatar(String _Name, char[] _Body){
+    super(_Name);
+    
+    m_Body = _Body;
     m_Fat = m_Fat_Start;
     
     m_Position = new PVector(0.5*width, 400.0);
     m_Acc = new PVector(0.0, 0.0);
     m_Velocity = new PVector(0.,0.);
     
-    m_lastDraw = 0.;
     m_Width = 60;
     m_Height = 60;
   }
@@ -45,8 +45,8 @@ class cAvatar extends cObjectVelocity{
     }
   }
   void hitPickUp(cPickUp _PickUp){
-    if ((m_Position.x+m_Height > _PickUp.m_Position.x && m_Position.x < _PickUp.m_Position.x + _PickUp.m_Height)
-          &&(m_Position.y+m_Width > _PickUp.m_Position.y && m_Position.y < _PickUp.m_Position.y + _PickUp.m_Width)){
+    if ((m_Position.x + 0.5 * m_Height > _PickUp.m_Position.x && m_Position.x - 0.5 * m_Height < _PickUp.m_Position.x + _PickUp.m_Height)
+          &&(m_Position.y + 0.5 * m_Width > _PickUp.m_Position.y && m_Position.y - 0.5 * m_Width < _PickUp.m_Position.y + _PickUp.m_Width)){
       m_Fat += _PickUp.m_Fat;
       _PickUp.m_alive=false;
     }
@@ -72,7 +72,7 @@ class cAvatar extends cObjectVelocity{
         
         String ava = "";
         for (int i=0; i < m_Life; i++){
-          ava = ava + String.format("%c", m_Name[i]);
+          ava = ava + String.format("%c", m_Body[i]);
         }
         
         pushStyle();
