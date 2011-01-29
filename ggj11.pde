@@ -53,35 +53,17 @@ void setup() {
 void draw() {
   background(0);
   Level.draw();
-}
-
-void keyPressed() {
-  if (key == 'y') {
-    Level = LevelFactory.make("1");
-    cLevelGame test = (cLevelGame)Level;
-   
+  
+  if (Level.m_Name.equals("Splash") && !(Level.m_Active)){
+      Level = LevelFactory.make("1");
+      
+  }
+  if (Level.m_Name.equals("1") && !(Level.m_Active)){
+      Level = LevelFactory.make("GameOver");
   }
 }
 
-void keyReleased() {
-
-  if(Level instanceof cLevelGame)
-  {
-    cLevelGame test = (cLevelGame)Level;
-
-    if (keyCode == ' ') {
-      test.up();
-    } 
-
-    if(key == CODED)
-    {
-      if (keyCode == UP) {
-        test.up();
-      } 
-      else if (keyCode == RIGHT) {
-        test.forward();
-      }
-    }
-  }
+void keyReleased(){
+  Level.keyReleased();
 }
 

@@ -1,30 +1,47 @@
 class cLevelSplash extends cLevel{
   
   int m_Feedentry;
-  
-  cLevelSplash(String _Name){
+  String m_Buffer;
+
+  cLevelSplash(String _Name) {
     super(_Name);
     
     m_Feedentry = 1;
-    
+    m_Buffer ="";
   }
   
   void draw(){
     
     fill(255);  
-     
-    // This is just a test. Sorry for messing up your code.
-    //text(feed.entry[1].title, 10,48, 800,600);
-    
-    fill(255, 0, 0);
-    text("Janina", random(width), random(height));
-    text("Kaspar", random(width), random(height));
-    text("Tillo", random(width), random(height));        
-    text("Dragica", random(width), random(height));
-    
-    
-    
-    ellipse(random(width), random(height), 55, 55);
+
+    pushStyle();
+    fill(255,0,0);
+    textAlign(CENTER);
+    textSize(144);
+    text("tExtinction", width/2, height/5);
+    popStyle();
+  }	
+
+
+  void keyReleased() {
+    if (key == CODED) {
+      if(keyCode == ALT) {
+        m_Buffer="";
+      }
+    }
+    else {
+      m_Buffer += key;
+      m_Buffer = m_Buffer.toLowerCase();
+      println(m_Buffer);
+      if(m_Buffer.equals("start")) {
+        println("Starting Level 1");
+        m_Active=false;
+      }
+      if(m_Buffer.equals("about")) {
+        println("Open about");
+        m_Active=false;
+      }
+    }
   }
   
 }
