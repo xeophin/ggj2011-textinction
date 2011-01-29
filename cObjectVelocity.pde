@@ -1,5 +1,5 @@
 class cObjectVelocity extends cObjectPosition{
   
-  cVector Velocity;
+  cVector m_Velocity;
   
 }
