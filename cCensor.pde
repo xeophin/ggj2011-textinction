@@ -21,14 +21,9 @@ class cCensor extends cObjectVelocity {
     
     float velo_x = _Scroll.x + (m_Velocity.x * _diffTime);  
     
-    shape(s1, m_Avatar.m_Fat%20,0);
-    s1.translate(random(-3,3) + velo_x, random(-3,3) + _Scroll.y);
-    
-    shape(s2, m_Avatar.m_Fat%m_Avatar.m_Fat_Start-width/4,0);
-    s2.translate(random(-6,6) + velo_x,random(-6,6) + _Scroll.y);
-    
-    shape(s3, m_Avatar.m_Fat%m_Avatar.m_Fat_Max-width/2,0);
-    s3.translate(random(-10,10) + velo_x,random(-10,10) + _Scroll.y);
-    
+    // Place the three shapes according to the current fat content
+    shape(s1, pow(a.m_Fat / a.m_Fat_Max,0.2) * 1000 - 1200 + random(-2,2), random(-2,2));
+    shape(s2, pow(a.m_Fat / a.m_Fat_Max,0.4) * 1000 - 1200 + random(-4,4), random(-2,2));
+    shape(s3, pow(a.m_Fat / a.m_Fat_Max,0.7) * 1000 - 1200 + random(-10,10), random(-2,2));
   }
 }
