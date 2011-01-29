@@ -57,7 +57,7 @@ void draw(){
 }
 
 void keyPressed() {
-  if (key == ' ') {
+  if (key == 'y') {
     Level = LevelFactory.make("1");
     cLevelGame test = (cLevelGame)Level;
     test.init("bg_texture.png");
@@ -68,6 +68,11 @@ void keyReleased() {
   if(Level instanceof cLevelGame)
   {
     cLevelGame test = (cLevelGame)Level;
+    
+    if (keyCode == ' ') {
+        test.up();
+     } 
+    
     if(key == CODED)
     {
       if (keyCode == UP) {
