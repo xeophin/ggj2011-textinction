@@ -12,14 +12,14 @@ class cAvatar extends cObjectVelocity{
   cAvatar(char[] _Name){
     m_Fat = 50.0;
     m_Name = _Name;
-    m_Position = new cVector(50.0, 400.0);
+    m_Position = new cVector(0.5*width, 400.0);
     m_Acc = new cVector(0.0, 0.0);
     m_Velocity = new cVector(0.,0.);
     m_lastDraw = 0.;
   }
   
   void forward(){
-    m_Velocity.m_X += 10+m_Fat;
+    //m_Velocity.m_X += 10+m_Fat;
   }
   
   void up(){
