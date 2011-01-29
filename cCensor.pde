@@ -9,7 +9,7 @@ class cCensor extends cObjectVelocity {
   
   cCensor (String _Name, cAvatar _Avatar) {
     super(_Name);
-    m_Velocity = new PVector(10.0,0.0);
+    m_Velocity = new PVector(0.2,0.0);
     
     m_Avatar = _Avatar;
     s1 =loadShape("censor1.svg");
@@ -17,16 +17,18 @@ class cCensor extends cObjectVelocity {
     s3 =loadShape("censor3.svg");
   }
     
-  void draw(PVector _Scroll) {
+  void draw(float _diffTime, PVector _Scroll) {
+    
+    float velo_x = _Scroll.x + (m_Velocity.x * _diffTime);  
     
     shape(s1, m_Avatar.m_Fat%20,0);
-    s1.translate(random(-3,3) + _Scroll.x, random(-3,3) + _Scroll.y);
+    s1.translate(random(-3,3) + velo_x, random(-3,3) + _Scroll.y);
     
     shape(s2, m_Avatar.m_Fat%m_Avatar.m_Fat_Start-width/4,0);
-    s2.translate(random(-6,6) + _Scroll.x,random(-6,6) + _Scroll.y);
+    s2.translate(random(-6,6) + velo_x,random(-6,6) + _Scroll.y);
     
     shape(s3, m_Avatar.m_Fat%m_Avatar.m_Fat_Max-width/2,0);
-    s3.translate(random(-10,10) + _Scroll.x,random(-10,10) + _Scroll.y);
+    s3.translate(random(-10,10) + velo_x,random(-10,10) + _Scroll.y);
     
   }
 }

@@ -5,7 +5,7 @@ class cHealthbar{
     m_Avatar = _Avatar;
   }
   
-  void draw () {
+  void draw (float _diffTime) {
     rect(width-130.0,25.0,100.0,30.0); 
     pushStyle();
     fill(0,255,0);

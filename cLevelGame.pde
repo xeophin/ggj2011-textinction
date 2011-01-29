@@ -2,6 +2,7 @@ class cLevelGame extends cLevel {
 
   cAvatar m_Avatar;
   cHealthbar m_Healthbar;
+  float m_lastDraw;
   
   // Adding a censor for testing purposes.
   cCensor m_Censor;
@@ -32,6 +33,8 @@ class cLevelGame extends cLevel {
     m_PickUpFactory = new cPickUpFactory();
     
     m_aPickUps = new cPickUp[3]; // probably list
+    
+    m_lastDraw = 0.;
   }
 
   void init( String _Background) {
@@ -50,47 +53,51 @@ class cLevelGame extends cLevel {
   }
 
   void draw() {
-    background(0,255,0);
-    
-    PVector Scroll;
-    
-    if(m_isForward == true){
-       Scroll = new PVector(-1*(m_Avatar.m_Fat_Max - m_Avatar.m_Fat), 0.0);
-       m_isForward = false;
+    if(m_lastDraw == 0){
+      m_lastDraw = millis();
     }
     else{
-       Scroll = new PVector(0.0, 0.0);
-    }
-    
-    m_PosBackground.add(Scroll);
-
-    //image(m_Background, m_PosBackground.x-width, m_PosBackground.y, width, height);   
-    image(m_Background, m_PosBackground.x, m_PosBackground.y, width, height);
-    image(m_Background, m_PosBackground.x+width, m_PosBackground.y, width, height);   
-    image(m_Background, m_PosBackground.x+width+width, m_PosBackground.y, width, height);       
-    
-    
-    if(m_PosBackground.x <= -width) {
-          m_PosBackground.x = 0;
-    }
-    
-    
-
-
-    m_Healthbar.draw();
-    m_Avatar.draw();
-    m_Censor.draw(Scroll);
-    
-    for(int i = 0; i < m_aPickUps.length; i++){
-      if(m_aPickUps[i]== null || !m_aPickUps[i].m_alive){
-        if(random(6)<= 3){
-          m_aPickUps[i] = m_PickUpFactory.make(true, width, m_Ground , 5);
-        }else{
-          m_aPickUps[i] = m_PickUpFactory.make(false, width, m_Ground , 5);
-        }
+      background(0,255,0);
+      
+      PVector Scroll;
+      
+      if(m_isForward == true){
+         Scroll = new PVector(-1*(m_Avatar.m_Fat_Max - m_Avatar.m_Fat), 0.0);
+         m_isForward = false;
       }
-      m_Avatar.hitPickUp(m_aPickUps[i]);
-      m_aPickUps[i].draw();
+      else{
+         Scroll = new PVector(0.0, 0.0);
+      }
+      
+      m_PosBackground.add(Scroll);
+  
+      //image(m_Background, m_PosBackground.x-width, m_PosBackground.y, width, height);   
+      image(m_Background, m_PosBackground.x, m_PosBackground.y, width, height);
+      image(m_Background, m_PosBackground.x+width, m_PosBackground.y, width, height);   
+      image(m_Background, m_PosBackground.x+width+width, m_PosBackground.y, width, height);       
+      
+      
+      if(m_PosBackground.x <= -width) {
+            m_PosBackground.x = 0;
+      }
+
+  
+      m_Healthbar.draw(millis()-m_lastDraw);
+      m_Avatar.draw(millis()-m_lastDraw);
+      m_Censor.draw(millis()-m_lastDraw, Scroll);
+      
+      for(int i = 0; i < m_aPickUps.length; i++){
+        if(m_aPickUps[i]== null || !m_aPickUps[i].m_alive){
+          if(random(6)<= 3){
+            m_aPickUps[i] = m_PickUpFactory.make(true, width, m_Ground , 5);
+          }else{
+            m_aPickUps[i] = m_PickUpFactory.make(false, width, m_Ground , 5);
+          }
+        }
+        m_Avatar.hitPickUp(m_aPickUps[i]);
+        m_aPickUps[i].draw();
+      }
+      m_lastDraw = millis(); 
     }
   }
 }
