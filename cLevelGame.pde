@@ -80,9 +80,11 @@ class cLevelGame extends cLevel {
       image(m_Background, m_PosBackground.x+width, m_PosBackground.y, width, height);   
       image(m_Background, m_PosBackground.x+width+width, m_PosBackground.y, width, height);       
       
+      float newTopHeight = height * m_Top.height / m_Background.height;
+      
       pushStyle();
       imageMode(CENTER);
-      image(m_Top, width/2.0, 450.0, width, height);
+      image(m_Top, width/2.0, newTopHeight/2.0, width, newTopHeight);
       popStyle();
 
       float newFloorHeight = height * m_Floor.height / m_Background.height;
