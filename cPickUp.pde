@@ -5,7 +5,8 @@ class cPickUp extends cObjectVelocity {
   float m_Width =30;
   float m_Height =30;
 
-  cPickUp(float _Fat, PVector _Position, PVector _Velocity) {
+  cPickUp(String _Name, float _Fat, PVector _Position, PVector _Velocity) {
+    super(_Name);
     m_Fat = _Fat;
     m_Position = _Position; 
     m_Velocity = _Velocity;

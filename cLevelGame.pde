@@ -14,6 +14,8 @@ class cLevelGame extends cLevel {
   PImage  m_Background;
   PVector m_PosBackground;
   
+  Boolean m_isForward = false;
+  
   cLevelGame(String _Name){
     super(_Name);
 
@@ -21,10 +23,10 @@ class cLevelGame extends cLevel {
       'a','b','c'
     };
 
-    m_Avatar = new cAvatar(test);
+    m_Avatar = new cAvatar("Avatar", test);
     m_Healthbar = new cHealthbar(m_Avatar);
     
-    m_Censor = new cCensor(m_Avatar);
+    m_Censor = new cCensor("Censor", m_Avatar);
 
     m_PosBackground = new PVector(0.0, 0.0);
     m_PickUpFactory = new cPickUpFactory();
@@ -43,12 +45,24 @@ class cLevelGame extends cLevel {
   void forward() {
     m_Avatar.forward();
     if(Phase != "GameOver"){
-      m_PosBackground.x -= m_Avatar.m_Fat_Max - m_Avatar.m_Fat;
+      m_isForward = true;
     }
   }
 
   void draw() {
     background(0,255,0);
+    
+    PVector Scroll;
+    
+    if(m_isForward == true){
+       Scroll = new PVector(-1*(m_Avatar.m_Fat_Max - m_Avatar.m_Fat), 0.0);
+       m_isForward = false;
+    }
+    else{
+       Scroll = new PVector(0.0, 0.0);
+    }
+    
+    m_PosBackground.add(Scroll);
 
     //image(m_Background, m_PosBackground.x-width, m_PosBackground.y, width, height);   
     image(m_Background, m_PosBackground.x, m_PosBackground.y, width, height);
@@ -59,10 +73,13 @@ class cLevelGame extends cLevel {
     if(m_PosBackground.x <= -width) {
           m_PosBackground.x = 0;
     }
+    
+    
+
 
     m_Healthbar.draw();
     m_Avatar.draw();
-    m_Censor.draw();
+    m_Censor.draw(Scroll);
     
     for(int i = 0; i < m_aPickUps.length; i++){
       if(m_aPickUps[i]== null || !m_aPickUps[i].m_alive){
