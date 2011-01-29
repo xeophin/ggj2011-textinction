@@ -1,5 +1,5 @@
 class cObjectPosition extends cGameObject{
   
-  cVector m_Position;
+  PVector m_Position;
 
 }
