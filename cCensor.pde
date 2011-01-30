@@ -14,7 +14,7 @@ class cCensor extends cObjectVelocity {
   cCensor (String _Name, cAvatar _Avatar) {
     super(_Name);
     m_Velocity = new PVector(1,0.0);
-    m_velocityMultiplier = 10;
+    m_velocityMultiplier = 30;
     
     m_Position = new PVector(0,0);
     
@@ -45,7 +45,6 @@ class cCensor extends cObjectVelocity {
     s3.translate(velo_x,0);
     
     m_Position = new PVector(m_Position.x + velo_x,0);
-    println(m_Position);
     
     // Check whether the bad boogeyman got us.
     if (m_Position.x > width) {

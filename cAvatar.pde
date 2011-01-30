@@ -21,6 +21,12 @@ class cAvatar extends cObjectVelocity{
   
   char[] m_Body = new char[3];
   
+  PFont thin;
+  PFont light;
+  PFont regular;
+  PFont stout;
+  PFont fat;
+  
   cAvatar(String _Name, char[] _Body, float _Ground){
     super(_Name);
     
@@ -35,6 +41,13 @@ class cAvatar extends cObjectVelocity{
     
     m_Width = 60;
     m_Height = 60;
+    
+    thin = loadFont("FagoRegular.vlw");
+    light = loadFont("FagoMedium.vlw");
+    regular = loadFont("FagoBold.vlw");
+    stout = loadFont("FagoExtraBold.vlw");
+    fat = loadFont("FagoBlack.vlw");
+    
   }
   
   void forward(){
@@ -79,6 +92,20 @@ class cAvatar extends cObjectVelocity{
         
         pushStyle();
         fill(255);
+        
+        // Visual Health Feedback
+        if (m_Fat < m_Fat_Max / 5) {
+          textFont(thin);
+        } else if (m_Fat < m_Fat_Max / 5 * 2) {
+          textFont(light);
+        } else if (m_Fat < m_Fat_Max / 5 * 3) {
+          textFont(regular);
+        } else if (m_Fat < m_Fat_Max / 5 * 4) {
+          textFont(stout);
+        } else if (m_Fat <= m_Fat_Max) {
+          textFont(fat);
+        }
+        
         textAlign(CENTER);
         textSize(84);
         text(ava, m_Position.x, m_Position.y);

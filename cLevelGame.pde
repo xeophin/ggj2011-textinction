@@ -105,8 +105,15 @@ class cLevelGame extends cLevel {
 
 
       m_Healthbar.draw(millis()-m_lastDraw);
-      m_Avatar.draw(millis()-m_lastDraw);
+     
+      
+      m_Article.draw();
+      
+       m_Avatar.draw(millis()-m_lastDraw);
+      
       m_Censor.draw(millis()-m_lastDraw, Scroll);
+      
+      
 
       for(int i = 0; i < m_aPickUps.length; i++) {
         if(m_aPickUps[i]== null || !m_aPickUps[i].m_alive) {
