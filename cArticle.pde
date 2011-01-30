@@ -4,14 +4,18 @@ class cArticle extends cObjectVelocity {
   FeedReader feed;
   String feedurl="http://feeds.bbci.co.uk/news/world/rss.xml";
 
+  cAvatar m_Avatar;
+
   int randomArticle;
 
   PFont titleFont;
   PFont bodyFont;
 
   /// Constructor
-  cArticle (String _Name) {
+  cArticle (String _Name, cAvatar _Avatar) {
     super(_Name);
+    
+    m_Avatar = _Avatar;
 
     titleFont = loadFont("JensonBold26.vlw");
     bodyFont = loadFont("JensonDisplay.vlw");
@@ -49,14 +53,14 @@ class cArticle extends cObjectVelocity {
     textMode(SCREEN);
     textAlign(CENTER);
     textFont(titleFont);
-    fill(#392919);
+    fill(#392919, 255 / m_Avatar.m_Fat_Max * m_Avatar.m_Fat);
     text(feed.entry[randomArticle].title, width/4,height/3.5 ,width/2,height/5);
     popStyle();
 
     pushStyle();
     textMode(SCREEN);
     textFont(bodyFont);
-    fill(#392919);
+    fill(#392919, 255 / m_Avatar.m_Fat_Max * m_Avatar.m_Fat);
     text(feed.entry[randomArticle].description, width/3.5,height/2.5,width/2,height/4);
     popStyle();
   }
