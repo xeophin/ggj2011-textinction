@@ -40,7 +40,7 @@ class cLevelGame extends cLevel {
 
     m_Censor = new cCensor("Censor", m_Avatar);
     
-    m_Article = new cArticle("Article");
+    m_Article = new cArticle("Article", m_Avatar);
 
     m_PosBackground = new PVector(0.0, 0.0);
     m_PickUpFactory = new cPickUpFactory();
