@@ -40,7 +40,7 @@ class cLevelGame extends cLevel {
 
     m_Censor = new cCensor("Censor", m_Avatar);
     
-    m_Article = new cArticle("Article", m_Avatar);
+  //  m_Article = new cArticle("Article", m_Avatar);
 
     m_PosBackground = new PVector(0.0, 0.0);
     m_PickUpFactory = new cPickUpFactory();
@@ -107,7 +107,7 @@ class cLevelGame extends cLevel {
       m_Healthbar.draw(millis()-m_lastDraw);
      
       
-      m_Article.draw();
+     // m_Article.draw();
       
        m_Avatar.draw(millis()-m_lastDraw);
       
@@ -118,10 +118,10 @@ class cLevelGame extends cLevel {
       for(int i = 0; i < m_aPickUps.length; i++) {
         if(m_aPickUps[i]== null || !m_aPickUps[i].m_alive) {
           if(random(6)<= 3) {
-            m_aPickUps[i] = m_PickUpFactory.make(true, width, m_Ground, 2);
+            m_aPickUps[i] = m_PickUpFactory.make(true, width, m_Ground, 1);
           }
           else {
-            m_aPickUps[i] = m_PickUpFactory.make(false, width, m_Ground, 2);
+            m_aPickUps[i] = m_PickUpFactory.make(false, width, m_Ground, 1);
           }
         }
         m_Avatar.hitPickUp(m_aPickUps[i]);
@@ -147,7 +147,7 @@ class cLevelGame extends cLevel {
         m_Avatar.up();
       } 
       else if (keyCode == RIGHT) {
-        m_Avatar.forward();
+        forward();
       }
     }
   }
