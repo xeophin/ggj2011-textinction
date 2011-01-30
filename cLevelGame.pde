@@ -12,7 +12,7 @@ class cLevelGame extends cLevel {
   
   // Implementing a way of making the game harder over time
   float m_StepLimit;
-  float m_StepConstant = 10; // every 50 steps, the censorship will get faster.
+  float m_StepConstant = 50; // every 50 steps, the censorship will get faster.
 
   cPickUpFactory m_PickUpFactory;
   cPickUp[] m_aPickUps; // pickups on the canvas, pickup dies if hit by avatar or moves out of screen.
@@ -54,7 +54,7 @@ class cLevelGame extends cLevel {
     m_lastDraw = 0.;
     
     // Set up progressive difficulty
-    m_StepLimit = 5;
+    m_StepLimit = m_StepConstant;
   }
 
   void up() {
@@ -142,7 +142,8 @@ class cLevelGame extends cLevel {
     // Progressive difficulty
     if (m_Avatar.m_Steps > m_StepLimit & m_Censor.m_velocityMultiplier > 2) {
       m_Censor.m_velocityMultiplier -= 2;
-      m_StepLimit = pow(m_StepLimit,0.4) * m_StepConstant;
+      m_StepLimit = m_StepLimit * 1.5;
+      println(m_StepLimit);
     }
 
       m_lastDraw = millis();

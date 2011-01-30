@@ -36,9 +36,9 @@ class cCensor extends cObjectVelocity {
     
     
     // Place the three shapes according to the current fat content
-    shape(s1, pow(m_Avatar.m_Fat / m_Avatar.m_Fat_Max,0.2) * width - width * 2.1 + random(-2,2), random(-5,5), width/2, height );
-    shape(s2, pow(m_Avatar.m_Fat / m_Avatar.m_Fat_Max,0.4) * width - width * 2 + random(-20,20), random(-5,5), width/2, height );
-    shape(s3, pow(m_Avatar.m_Fat / m_Avatar.m_Fat_Max,0.7) * width - width * 2 + random(-40,40) , random(-5,5), width/2, height );
+    shape(s1, pow(m_Avatar.m_Fat / m_Avatar.m_Fat_Max,0.2) * width / 2 - width * 1.75 + random(-2,2), random(-5,5), width/2, height );
+    shape(s2, pow(m_Avatar.m_Fat / m_Avatar.m_Fat_Max,0.4) * width / 2 - width * 1.75 + random(-4,4), random(-5,5), width/2, height );
+    shape(s3, pow(m_Avatar.m_Fat / m_Avatar.m_Fat_Max,0.7) * width / 2 - width * 1.75 + random(-8,8) , random(-5,5), width/2, height );
     
     s1.translate(velo_x,0);
     s2.translate(velo_x,0);
@@ -47,7 +47,7 @@ class cCensor extends cObjectVelocity {
     m_Position = new PVector(m_Position.x + velo_x,0);
     
     // Check whether the bad boogeyman got us.
-    if (m_Position.x > width) {
+    if (m_Position.x + pow(m_Avatar.m_Fat / m_Avatar.m_Fat_Max,0.4) * width / 4 > width * 1.5) {
        m_Avatar.m_Life -= 1;
        m_Avatar.m_Fat = m_Avatar.m_Fat_Start;
        

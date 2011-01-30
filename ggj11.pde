@@ -18,7 +18,7 @@ void setup(){
   size(800, 600);
   
     // For vector fonts, use the createFont() function. 
-  fontSplash = loadFont("FagoBold.vlw");
+  fontSplash = loadFont("Archer-Hairline-84.vlw");
 
   // Set the font and its size (in units of pixels)
   textFont(fontSplash, 32);
