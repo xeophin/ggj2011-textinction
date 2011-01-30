@@ -65,6 +65,38 @@ class FeedReader {
       e.printStackTrace();
     }
   }
+  
+  // This uses an InputStream as a source, so we can catch a failing
+  // internet connection earlier on.
+  public FeedReader(InputStream _stream) {
+    try {
+      feed=new SyndFeedInput().build(new XmlReader(_stream));
+      description=feed.getDescription();
+      title=feed.getTitle();
+
+      java.util.List entrl=feed.getEntries();
+      Object [] o=entrl.toArray();
+      numEntries=o.length;
+
+      entry=new FeedEntry[numEntries];
+      for(int i=0; i< numEntries; i++) {
+        entry[i]=new FeedEntry((SyndEntryImpl)o[i]);
+        println(i+": "+entry[i]);
+      }
+    }
+    catch(Exception e) {
+      println("Exception in Feedreader: "+e.toString());
+      e.printStackTrace();
+    }
+  }
+  
+  // This is more a dummy constructor – it creates a simple feedreader
+  // object that works as a stand-in when no internet connection is 
+  // available.
+  public FeedReader() {
+    entry=new FeedEntry[1];
+    entry[0] = new FeedEntry("Governmental Internet Shut-Downs", "Due to the current crisis in internet connections, no real content could be provided.");
+  }
 
 }
 
@@ -96,6 +128,13 @@ class FeedEntry {
       e.printStackTrace();
     }
 
+  }
+  
+  // This is a very ugly hack to overload the constructor, in order to be
+  // able to create a very basic FeedEntry
+  public FeedEntry(String _title, String _description) {
+      title = _title;
+      description = _description;
   }
 
   public String toString() {
