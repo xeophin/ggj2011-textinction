@@ -147,7 +147,7 @@ class cLevelGame extends cLevel {
         m_Avatar.up();
       } 
       else if (keyCode == RIGHT) {
-        m_Avatar.forward();
+        forward();
       }
     }
   }

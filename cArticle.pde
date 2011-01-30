@@ -14,7 +14,7 @@ class cArticle extends cObjectVelocity {
   /// Constructor
   cArticle (String _Name, cAvatar _Avatar) {
     super(_Name);
-    
+
     m_Avatar = _Avatar;
 
     titleFont = loadFont("JensonBold26.vlw");
@@ -22,8 +22,15 @@ class cArticle extends cObjectVelocity {
 
     println("Loading feed: "+feedurl);
     try {
-      feed = new FeedReader(feedurl);
-      randomArticle = int(random(feed.numEntries));
+      InputStream data = createInput(feedurl);
+      if (data != null) { 
+        feed = new FeedReader(data);
+        randomArticle = int(random(feed.numEntries));
+      } else {
+      println("Oh, there is no internet connection!");
+        feed = new FeedReader();
+        randomArticle = 0;
+      }
     } 
     catch (Exception e) {
       // I guess we should provide some alternative text here if we don't get one online.
@@ -44,7 +51,6 @@ class cArticle extends cObjectVelocity {
     //  for(int i=0; i< feed.numEntries; i++) {
     //    println(i+": "+feed.entry[i]);
     //  }
-
   }
 
   void draw () {
@@ -54,7 +60,7 @@ class cArticle extends cObjectVelocity {
     textAlign(CENTER);
     textFont(titleFont);
     fill(#392919, 255 / m_Avatar.m_Fat_Max * m_Avatar.m_Fat);
-    text(feed.entry[randomArticle].title, width/4,height/3.5 ,width/2,height/5);
+    text(feed.entry[randomArticle].title, width/4,height/3.5,width/2,height/5);
     popStyle();
 
     pushStyle();
