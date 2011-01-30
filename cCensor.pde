@@ -14,7 +14,7 @@ class cCensor extends cObjectVelocity {
   cCensor (String _Name, cAvatar _Avatar) {
     super(_Name);
     m_Velocity = new PVector(1,0.0);
-    m_velocityMultiplier = 30;
+    m_velocityMultiplier = 20;
     
     m_Position = new PVector(0,0);
     
