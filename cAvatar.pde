@@ -3,7 +3,7 @@ class cAvatar extends cObjectVelocity{
   
   float m_Fat_Start = 70.0;
   float m_Fat_Max = 100.0;
-  float m_FatLoss = 0.3;
+  float m_FatLoss = 1.0;
   float m_Fat;
   int   m_Life = 3;
   int   m_Steps = 0;
@@ -11,7 +11,7 @@ class cAvatar extends cObjectVelocity{
   float m_Ground = 500.0;
   
   PVector m_Acc;
-  //PVector m_Velocity;
+  PVector m_Velocity;
 
   float m_Width;
   float m_Height;
@@ -51,7 +51,7 @@ class cAvatar extends cObjectVelocity{
   }
   
   void forward(){
-    //m_Velocity.x += 10+m_Fat;
+    m_Velocity.x += (m_Fat_Max-m_Fat)/500;
     if(m_Life > 0){
       m_Fat -= m_FatLoss;
       m_Steps++;
