@@ -77,6 +77,9 @@ class cAvatar extends cObjectVelocity {
       if(m_Fat <=0) {
         m_Life -= 1;
         m_Fat = m_Fat_Start;
+        
+        m_Snippet= m_Minim.loadSnippet("endoflife.mp3");
+        m_Snippet.play();
       }
 
       m_Position.x += m_Velocity.x * (_diffTime)/1000;
