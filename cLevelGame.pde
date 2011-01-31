@@ -51,6 +51,9 @@ class cLevelGame extends cLevel {
 
     m_aPickUps = new cPickUp[3]; // probably list
 
+    m_AudioPlayer = m_Minim.loadFile("raindrops1.mp3");
+    m_AudioPlayer.loop();
+  
     m_lastDraw = 0.;
     
     // Set up progressive difficulty
@@ -134,6 +137,8 @@ class cLevelGame extends cLevel {
         m_Avatar.hitPickUp(m_aPickUps[i]);
         m_aPickUps[i].draw(millis()-m_lastDraw, Scroll);
       }
+      
+    m_SampleManager.draw();
      
 	if(m_Avatar.m_Life<=0) {
       m_Active=false;
