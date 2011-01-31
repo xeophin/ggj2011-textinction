@@ -1,17 +1,19 @@
-class cLevelSplash extends cLevel{
-  
+class cLevelSplash extends cLevel {
+
   int m_Feedentry;
   String m_Buffer;
+  boolean m_NameEntered;
 
   cLevelSplash(String _Name) {
     super(_Name);
-    
+
     m_Feedentry = 1;
     m_Buffer ="";
+    m_NameEntered = false;
   }
-  
-  void draw(){
-    
+
+  void draw() {
+
     fill(255);  
 
     pushStyle();
@@ -20,18 +22,31 @@ class cLevelSplash extends cLevel{
     textSize(144);
     text("tExtinction", width/2, height/5);
     popStyle();
-    
+
+
     pushStyle();
     fill(255,0,0);
     textAlign(CENTER);
-    textSize(20);
-    text("Collect Ink to keep your visibility.", width/2, height-260);
-    text("Avoid Light to not fade into nonexistence.", width/2, height-230);
-    text("...keep a healthy balance or the censors will delete you!", width/2, height-200);
+    textSize(34);
+    if(m_NameEntered) {
+      text("Type what you want to do.\n\n Confirm with SPACE. \n\n Correct with ALT", width/2, height/3);
+    }
+    else {
+      text("Type your name (3 Letters) to login: \n\n Confirm with SPACE \n\n Correct with ALT", width/2, height/3);
+    }
     popStyle();
-    
-  }	
 
+    pushStyle();
+    fill(255,0,0);
+    //textAlign(RIGHT);
+    textSize(34);
+    if(m_NameEntered) {
+      text(PlayerName+"@tExtinction $: " +m_Buffer, width/6, height/1.3);
+    }else{
+      text("   @tExtinction$: " +m_Buffer, width/6, height/1.3);
+    }
+    popStyle();
+  }	
 
   void keyReleased() {
     if (key == CODED) {
@@ -43,15 +58,23 @@ class cLevelSplash extends cLevel{
       m_Buffer += key;
       m_Buffer = m_Buffer.toLowerCase();
       println(m_Buffer);
-      if(m_Buffer.equals("start")) {
-        println("Starting Level 1");
-        m_Active=false;
+      if(m_NameEntered) {
+        if(m_Buffer.equals("start ") || m_Buffer.equals("run ")|| m_Buffer.equals("exec ")) {
+          println("Starting Level 1");
+          m_State=1;
+        }
+        if(m_Buffer.equals("about ") || m_Buffer.equals("help ") ||  m_Buffer.equals("info ") || m_Buffer.equals("man ")) {
+          m_State=2;
+        }
       }
-      if(m_Buffer.equals("about")) {
-        println("Open about");
-        m_Active=false;
+      else {
+        if(m_Buffer.length() == 4 && key ==' ') {
+          PlayerName = m_Buffer.substring(0,3);
+          m_Buffer = "";
+          m_NameEntered = true;
+        }
       }
     }
   }
-  
 }
+

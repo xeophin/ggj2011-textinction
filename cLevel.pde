@@ -1,19 +1,17 @@
-class cLevel{
-  
+class cLevel {
+
   String m_Name;
-  boolean m_Active;
+  int m_State;
 
-  cLevel(String _Name){
+  cLevel(String _Name) {
     m_Name = _Name;
-    m_Active = true;
+    m_State = 0;
   }
-  
 
-  
-  void draw(){
+  void draw() {
   }
-  
 
   void keyReleased() {
   }
 }
+
