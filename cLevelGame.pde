@@ -6,10 +6,10 @@ class cLevelGame extends cLevel {
 
   // Adding a censor for testing purposes.
   cCensor m_Censor;
-  
+
   // Adding an article
   cArticle m_Article;
-  
+
   // Implementing a way of making the game harder over time
   float m_StepLimit;
   float m_StepConstant = 50; // every 50 steps, the censorship will get faster.
@@ -34,16 +34,18 @@ class cLevelGame extends cLevel {
     m_Background = loadImage(_Backgrounds[0]);
     m_Top = loadImage(_Backgrounds[1]);
     m_Floor = loadImage(_Backgrounds[2]);
-    
+
     m_Ground = height - (height * m_Floor.height / m_Background.height+10);
-    
-    char[] test = {'a','b','c'};
+
+    char[] test = {
+      'a','b','c'
+    };
 
     m_Avatar = new cAvatar("Avatar", test, m_Ground);
     m_Healthbar = new cHealthbar(m_Avatar);
 
     m_Censor = new cCensor("Censor", m_Avatar);
-    
+
     m_Article = new cArticle("Article", m_Avatar);
 
     m_PosBackground = new PVector(0.0, 0.0);
@@ -55,7 +57,7 @@ class cLevelGame extends cLevel {
     m_AudioPlayer.loop();
   
     m_lastDraw = 0.;
-    
+
     // Set up progressive difficulty
     m_StepLimit = m_StepConstant;
   }
@@ -76,6 +78,13 @@ class cLevelGame extends cLevel {
       m_lastDraw = millis();
     }
     else {
+
+      //Doing some stuff in case we recently died.
+      if (m_Avatar.m_RecentlyDied) {
+        m_Avatar.m_RecentlyDied = false;
+        m_Article.randomArticle = int(random(m_Article.feed.numEntries));
+      }
+
       background(0,255,0);
 
       PVector Scroll;
@@ -87,16 +96,16 @@ class cLevelGame extends cLevel {
       else {
         Scroll = new PVector(0.0, 0.0);
       }
-     
+
 
       m_PosBackground.add(Scroll);
 
       image(m_Background, m_PosBackground.x, m_PosBackground.y, width, height);
       image(m_Background, m_PosBackground.x+width, m_PosBackground.y, width, height);   
       image(m_Background, m_PosBackground.x+width+width, m_PosBackground.y, width, height);       
-      
+
       float newTopHeight = height * m_Top.height / m_Background.height;
-      
+
       pushStyle();
       imageMode(CENTER);
       image(m_Top, width/2.0, newTopHeight/2.0, width, newTopHeight);
@@ -115,15 +124,15 @@ class cLevelGame extends cLevel {
 
 
       m_Healthbar.draw(millis()-m_lastDraw);
-     
-      
+
+
       m_Article.draw();
-      
-       m_Avatar.draw(millis()-m_lastDraw);
-      
+
+      m_Avatar.draw(millis()-m_lastDraw);
+
       m_Censor.draw(millis()-m_lastDraw, Scroll);
-      
-      
+
+
 
       for(int i = 0; i < m_aPickUps.length; i++) {
         if(m_aPickUps[i]== null || !m_aPickUps[i].m_alive) {

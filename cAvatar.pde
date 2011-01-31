@@ -21,11 +21,15 @@ class cAvatar extends cObjectVelocity {
 
   char[] m_Body = new char[3];
 
+  // Fonts
   PFont thin;
   PFont light;
   PFont regular;
   PFont stout;
   PFont fat;
+  
+  // Did we recently die? Just asking.
+  boolean m_RecentlyDied = false;
 
   cAvatar(String _Name, char[] _Body, float _Ground) {
     super(_Name);
@@ -80,6 +84,7 @@ class cAvatar extends cObjectVelocity {
         
         m_Snippet= m_Minim.loadSnippet("endoflife.mp3");
         m_Snippet.play();
+        m_RecentlyDied = true;
       }
 
       m_Position.x += m_Velocity.x * (_diffTime)/1000;

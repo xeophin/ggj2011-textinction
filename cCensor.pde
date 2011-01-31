@@ -50,7 +50,7 @@ class cCensor extends cObjectVelocity {
     if (m_Position.x + pow(m_Avatar.m_Fat / m_Avatar.m_Fat_Max,0.4) * width / 4 > width * 1.5) {
        m_Avatar.m_Life -= 1;
        m_Avatar.m_Fat = m_Avatar.m_Fat_Start;
-       
+       m_Avatar.m_RecentlyDied = true;
        
        // Reset all positions so the player can get a somewhat new start.
        s1.resetMatrix();
