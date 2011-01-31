@@ -68,7 +68,7 @@ class cArticle extends cObjectVelocity {
     textMode(SCREEN);
     textFont(bodyFont);
     fill(#392919, 255 / m_Avatar.m_Fat_Max * m_Avatar.m_Fat);
-    text(feed.entry[randomArticle].description, width/3.5,height/2.5,width/2,height/4);
+    text(feed.entry[randomArticle].description, width/4,height/2.5,width/2,height/4);
     popStyle();
   }
 }
