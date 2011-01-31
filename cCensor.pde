@@ -45,6 +45,7 @@ class cCensor extends cObjectVelocity {
     s3.translate(velo_x,0);
     
     m_Position = new PVector(m_Position.x + velo_x,0);
+
     
     // Check whether the bad boogeyman got us.
     if (m_Position.x + pow(m_Avatar.m_Fat / m_Avatar.m_Fat_Max,0.4) * width / 4 > width * 1.5) {

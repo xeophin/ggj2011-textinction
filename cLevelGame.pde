@@ -37,11 +37,9 @@ class cLevelGame extends cLevel {
 
     m_Ground = height - (height * m_Floor.height / m_Background.height+10);
 
-    char[] test = {
-      'a','b','c'
-    };
+    char[] m_Name = PlayerName.toCharArray();
 
-    m_Avatar = new cAvatar("Avatar", test, m_Ground);
+    m_Avatar = new cAvatar("Avatar", m_Name, m_Ground);
     m_Healthbar = new cHealthbar(m_Avatar);
 
     m_Censor = new cCensor("Censor", m_Avatar);
@@ -68,9 +66,7 @@ class cLevelGame extends cLevel {
 
   void forward() {
     m_Avatar.forward();
-    if(Phase != "GameOver") {
-      m_isForward = true;
-    }
+    m_isForward = true;
   }
 
   void draw() {
@@ -132,28 +128,24 @@ class cLevelGame extends cLevel {
 
       m_Censor.draw(millis()-m_lastDraw, Scroll);
 
-
-
       for(int i = 0; i < m_aPickUps.length; i++) {
         if(m_aPickUps[i]== null || !m_aPickUps[i].m_alive) {
           if(random(6)<= 3) {
-            m_aPickUps[i] = m_PickUpFactory.make(true, width, m_Ground, 1);
+            m_aPickUps[i] = m_PickUpFactory.make(true, width, m_Ground-100, 1);
           }
           else {
-            m_aPickUps[i] = m_PickUpFactory.make(false, width, m_Ground, 1);
+            m_aPickUps[i] = m_PickUpFactory.make(false, width, m_Ground-100, 1);
           }
         }
         m_Avatar.hitPickUp(m_aPickUps[i]);
         m_aPickUps[i].draw(millis()-m_lastDraw, Scroll);
       }
-      
     m_SampleManager.draw();
-     
-	if(m_Avatar.m_Life<=0) {
-      m_Active=false;
-    }
-    
-    // Progressive difficulty
+
+      if(m_Avatar.m_Life<=0) {
+        m_State=1;
+      }
+// Progressive difficulty
     if (m_Avatar.m_Steps > m_StepLimit & m_Censor.m_velocityMultiplier > 2) {
       m_Censor.m_velocityMultiplier -= 2;
       m_StepLimit = m_StepLimit * 1.5;
@@ -165,14 +157,17 @@ class cLevelGame extends cLevel {
   }
 
   void keyReleased() {
-    if (keyCode == ' ') {
-      m_Avatar.up();
+    if (key == ' ') {
+      up();
+    } 
+    if (key == 'k') {
+      m_Avatar.m_Life--;
     } 
 
     if(key == CODED)
     {
       if (keyCode == UP) {
-        m_Avatar.up();
+        up();
       } 
       else if (keyCode == RIGHT) {
         forward();

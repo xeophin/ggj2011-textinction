@@ -1,7 +1,7 @@
 class cAvatar extends cObjectVelocity {
 
 
-  float m_Fat_Start = 70.0;
+  float m_Fat_Start = 50.0;
   float m_Fat_Max = 100.0;
   float m_FatLoss = 1.0;
   float m_Fat;
@@ -16,7 +16,7 @@ class cAvatar extends cObjectVelocity {
   float m_Width;
   float m_Height;
 
-  float m_Gravity = 25;
+  float m_Gravity = 20;
   float m_Drag = 1.0;
 
   char[] m_Body = new char[3];
@@ -63,7 +63,7 @@ class cAvatar extends cObjectVelocity {
 
   void up() {
     if(abs(m_Velocity.y) < 0.05) {
-      m_Velocity.y = 13*(-m_Fat_Max+m_Fat);
+      m_Velocity.y = 5*(-m_Fat_Max+m_Fat);
     }
   }
   void hitPickUp(cPickUp _PickUp) {
@@ -147,6 +147,7 @@ class cAvatar extends cObjectVelocity {
         life += "o";
       }
       String steps = String.format("%d", m_Steps*100);
+      PlayerScore = m_Steps*100;
 
       pushStyle();
       textSize(18);
@@ -164,7 +165,6 @@ class cAvatar extends cObjectVelocity {
       textSize(144);
       text("Game Over", width/2, height/2);
       popStyle(); 
-      Phase = "GameOver";
     }
   }
 }
