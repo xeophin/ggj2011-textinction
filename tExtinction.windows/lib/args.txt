@@ -1,3 +1,0 @@
-
-tExtinction
-rome-1.0.jar,tExtinction.jar,core.jar,tritonus_aos.jar,tritonus_share.jar,mp3spi1.9.4.jar,jl1.0.jar,minim.jar,jsminim.jar,minim-spi.jar,tritonus_aos.jar,tritonus_share.jar,mp3spi1.9.4.jar,jl1.0.jar,minim.jar,jsminim.jar,minim-spi.jar,tritonus_aos.jar,tritonus_share.jar,mp3spi1.9.4.jar,jl1.0.jar,minim.jar,jsminim.jar,minim-spi.jar,tritonus_aos.jar,tritonus_share.jar,mp3spi1.9.4.jar,jl1.0.jar,minim.jar,jsminim.jar,minim-spi.jar
